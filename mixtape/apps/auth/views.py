@@ -9,7 +9,7 @@ class SoundCloudLogin(View):
 
     def get(self, request):
         form = SoundCloudLoginForm(request)
-        print form.token
+        print form.__dict__
 
 
 class SoundCloudGetUrl(View):
