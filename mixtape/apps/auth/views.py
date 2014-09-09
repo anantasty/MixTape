@@ -9,7 +9,9 @@ class SoundCloudLogin(View):
 
     def get(self, request):
         form = SoundCloudLoginForm(request)
-        print form.__dict__
+        code = form.fields['code']
+        print code
+        return http.JsonResponse({'code': code})
 
 
 class SoundCloudGetUrl(View):
