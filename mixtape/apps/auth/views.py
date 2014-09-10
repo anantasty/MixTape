@@ -20,7 +20,8 @@ class SoundCloudGetUrl(View):
 
     def get(self, request):
         print "out_req session_id = {}".format(request.session.session_key)
-        return http.HttpResponseRedirect(soundcloud_utils.get_login_url())
+        return http.HttpResponseRedirect(soundcloud_utils.get_login_url(
+            request))
 
 
 
