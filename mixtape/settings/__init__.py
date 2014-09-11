@@ -1,15 +1,10 @@
-"""
-Django settings for mixtape project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import imp
+
+PROJECT_ROOT = imp.find_module('mixtape')[1]
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates'),
+)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -26,6 +21,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/auth/redirect/'
+LOGIN_ERROR_URL = '/login-error/'
 
 # Application definition
 
@@ -37,7 +35,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #social auth
-    'social_auth'
+    'social_auth',
+    #local apps
+    'mixtape.apps.internal_auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,10 +60,13 @@ WSGI_APPLICATION = 'mixtape.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mixtape',
+        'USER': 'proton',
     }
 }
+
+SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 
 AUTHENTICATION_BACKENDS = (
     # 'social_auth.backends.twitter.TwitterBackend',
@@ -94,3 +97,20 @@ STATIC_URL = '/static/'
 SOUNDCLOUD_CLIENT_ID = '32abbfcd85f0a26aedfbf1aaae25f433'
 
 SOUNDCLOUD_SECRET = '1cc1be5936c3fc592e7f5b17d5c9657f'
+
+
+#socialauth settings
+
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+SOCIAL_AUTH_UID_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+
+
+SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook')
+
+FACEBOOK_API_SECRET = '9382e360dd45cd014ca1ccd41ee5e0cc'
+
+FACEBOOK_APP_ID = '842259272474007'

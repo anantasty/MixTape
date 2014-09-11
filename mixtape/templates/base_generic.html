@@ -1,0 +1,20 @@
+<html>
+    <head>
+        {% block css %}
+        {% endblock %}
+
+        {% block header %}
+        {% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <!-- header, etc -->
+        {% block content %}
+        {% endblock %}
+        <!-- footer -->
+        {% block js %}
+        {% endblock %}
+        {% block page-js %}
+        {% endblock %}
+    </body>
+</html>
