@@ -29,7 +29,7 @@ class SoundCloudGetUrl(View):
 
 
 class HomePage(View):
-    template_name = 'login_success.html'
+    template_name = 'home_page.html'
 
     def get(self, request):
         return render(request, self.template_name)
