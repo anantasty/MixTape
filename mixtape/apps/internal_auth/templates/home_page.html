@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <a href="{% url 'socialauth_begin' 'facebook' %}">Login with Facebook</a>
+  <a href="{% url 'socialauth_begin' 'soundcloud' %}">Login with SoundCloud</a>
+</div>
+{% endblock %}

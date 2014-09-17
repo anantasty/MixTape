@@ -71,6 +71,7 @@ SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 AUTHENTICATION_BACKENDS = (
     # 'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.OAuth',
     # 'social_auth.backends.google.GoogleOAuthBackend',
     # 'social_auth.backends.google.GoogleOAuth2Backend',
     'django.contrib.auth.backends.ModelBackend'
@@ -96,7 +97,7 @@ STATIC_URL = '/static/'
 
 SOUNDCLOUD_CLIENT_ID = '32abbfcd85f0a26aedfbf1aaae25f433'
 
-SOUNDCLOUD_SECRET = '1cc1be5936c3fc592e7f5b17d5c9657f'
+SOUNDCLOUD_CLIENT_SECRET = '1cc1be5936c3fc592e7f5b17d5c9657f'
 
 
 #socialauth settings
@@ -109,7 +110,7 @@ SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
 SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
 
 
-SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook')
+SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook', 'soundcloud')
 
 FACEBOOK_API_SECRET = '9382e360dd45cd014ca1ccd41ee5e0cc'
 

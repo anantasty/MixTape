@@ -28,6 +28,13 @@ class SoundCloudGetUrl(View):
             request))
 
 
+class HomePage(View):
+    template_name = 'login_success.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+
 def login(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse(login_redirect(request.user)))
